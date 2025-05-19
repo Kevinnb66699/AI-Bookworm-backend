@@ -9,4 +9,4 @@ env/
 *.db
 *.log
 .DS_Store
-models/vosk-model-cn 
+models/vosk-model-cn/

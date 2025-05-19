@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 class SpeechService:
     def __init__(self):
         # 在初始化时就加载模型
-        model_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'models', 'vosk-model-en-us-0.42-gigaspeech')
+        model_path = '/app/models/vosk-model-en-us-0.42-gigaspeech'
         if not os.path.exists(model_path):
             raise FileNotFoundError(f"Vosk model not found at {model_path}")
         

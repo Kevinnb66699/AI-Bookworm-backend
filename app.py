@@ -5,14 +5,14 @@ from app import create_app, db
 import logging
 
 # 自动下载 vosk 语音识别模型
-MODEL_DIR = "backend/models/vosk-model-en-us-0.42-gigaspeech"
+MODEL_DIR = "/app/models/vosk-model-en-us-0.42-gigaspeech"
 MODEL_URL = "https://alphacephei.com/vosk/models/vosk-model-en-us-0.42-gigaspeech.zip"
-ZIP_PATH = "backend/models/vosk-model-en-us-0.42-gigaspeech.zip"
+ZIP_PATH = "/app/models/vosk-model-en-us-0.42-gigaspeech.zip"
 
 def download_model():
     if not os.path.exists(MODEL_DIR):
         print("模型不存在，正在下载...")
-        os.makedirs("backend/models", exist_ok=True)
+        os.makedirs("/app/models", exist_ok=True)
         with requests.get(MODEL_URL, stream=True) as r:
             r.raise_for_status()
             with open(ZIP_PATH, "wb") as f:
@@ -20,7 +20,7 @@ def download_model():
                     f.write(chunk)
         # 解压
         with zipfile.ZipFile(ZIP_PATH, "r") as zip_ref:
-            zip_ref.extractall("backend/models")
+            zip_ref.extractall("/app/models")
         os.remove(ZIP_PATH)
         print("模型下载并解压完成！")
     else:
