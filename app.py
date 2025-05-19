@@ -54,4 +54,5 @@ if __name__ == '__main__':
     # 启用调试模式以显示详细错误信息
     app.config['DEBUG'] = True
     logger.info("正在启动 Flask 服务器...")
-    app.run(host='0.0.0.0', port=5000, debug=True) 
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, debug=True) 
